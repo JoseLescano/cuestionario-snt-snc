@@ -82,7 +82,7 @@
       <span class="text-slate-300">/</span>
       <span class="text-slate-700">D.L. N° 1441 / 1645 (TESORERÍA) &amp; D.L. N° 1438 / 1525 (CONTABILIDAD)</span>
       <span class="text-slate-300">/</span>
-      <span class="text-amber-700 font-black uppercase tracking-wider">Balotario Especializado (60 Ítems)</span>
+      <span class="text-amber-700 font-black uppercase tracking-wider">Banco Aleatorio + V/F (60 Ítems)</span>
     </nav>
 
     <!-- Título Principal y Selector de Módulo -->
@@ -90,13 +90,13 @@
       class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 bg-gradient-to-r from-blue-900 to-slate-900 text-white p-4 rounded-2xl shadow-md border-l-8 border-red-600">
       <div class="flex items-center gap-3">
         <div class="bg-white/10 p-2.5 rounded-xl text-amber-300 text-2xl shrink-0">
-          <i class="fa-solid fa-landmark"></i>
+          <i class="fa-solid fa-shuffle"></i>
         </div>
         <div>
           <h2 class="text-lg md:text-xl font-black tracking-tight">EVALUACIÓN DE TESORERÍA Y CONTABILIDAD DEL SECTOR
             PÚBLICO</h2>
-          <p class="text-xs text-slate-200 font-medium">Principios rectores (cumplimiento e incumplimiento), normativa y
-            casos prácticos con alternativas balanceadas.</p>
+          <p class="text-xs text-slate-200 font-medium">Preguntas y alternativas en orden aleatorio en cada intento •
+            Incluye ítems de Opción Múltiple y Verdadero / Falso.</p>
         </div>
       </div>
 
@@ -145,6 +145,10 @@
               <span class="text-2xl font-black text-indigo-900" id="moodle-q-num">1</span>
             </div>
             <hr class="border-slate-200">
+            <div>
+              <span class="block text-slate-500 font-medium">Tipo de ítem:</span>
+              <span class="font-black text-indigo-800 text-xs uppercase" id="q-type-tag">Opción Múltiple</span>
+            </div>
             <div>
               <span class="block text-slate-500 font-medium">Estado:</span>
               <span class="font-black text-slate-400 text-xs uppercase" id="status-tag">Sin
@@ -215,7 +219,11 @@
             class="grid grid-cols-7 sm:grid-cols-8 lg:grid-cols-7 gap-1.5 max-h-80 overflow-y-auto pr-1">
           </div>
 
-          <div class="pt-3 border-t text-right">
+          <div class="pt-3 border-t space-y-2">
+            <button onclick="restartQuiz()"
+              class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-black transition-colors">
+              <i class="fa-solid fa-shuffle me-1"></i> Mezclar preguntas de nuevo
+            </button>
             <button onclick="finishQuiz()"
               class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black shadow transition-colors">
               Terminar intento y ver nota...
@@ -265,7 +273,7 @@
       </div>
       <button onclick="restartQuiz()"
         class="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black text-xs hover:bg-slate-800 shadow-xl transition-transform hover:scale-105">
-        <i class="fa-solid fa-rotate-right me-2"></i> Reintentar el Cuestionario
+        <i class="fa-solid fa-rotate-right me-2"></i> Nuevo Intento Aleatorio
       </button>
     </div>
   </main>
@@ -273,11 +281,11 @@
   <script>
     const rawQuizData = [
       // =========================================================
-      // MÓDULO 1: SISTEMA NACIONAL DE TESORERÍA - D.L. 1441 / 1645 (01 - 30)
+      // MÓDULO 1: SISTEMA NACIONAL DE TESORERÍA - D.L. 1441 / 1645 (30 ÍTEMS)
       // =========================================================
       {
-        origNum: "01",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Definición y Rectoría",
         question: "¿Qué comprende el Sistema Nacional de Tesorería según el Decreto Legislativo N° 1441?",
         hint: "Decreto Legislativo N° 1441 — Art. 4 (Definición del SNT).",
@@ -291,8 +299,8 @@
         exp: "El Sistema Nacional de Tesorería regula el manejo eficiente de los flujos financieros (ingresos y pagos) de los Fondos Públicos."
       },
       {
-        origNum: "02",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principios Rectores",
         question: "¿Qué principio del SNT dispone la administración centralizada de los Fondos Públicos cualquiera sea su origen y finalidad?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Unidad de Caja).",
@@ -306,8 +314,8 @@
         exp: "La Unidad de Caja centraliza la administración de los Fondos Públicos en la CUT respetando la titularidad y registro que corresponda."
       },
       {
-        origNum: "03",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principios Rectores",
         question: "¿En qué consiste el principio de 'Fungibilidad' en la gestión de la Cuenta Única del Tesoro Público (CUT)?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Fungibilidad).",
@@ -321,8 +329,8 @@
         exp: "La fungibilidad permite utilizar temporalmente los saldos disponibles en la CUT para atender pagos oportunos sin afectar la titularidad de los recursos."
       },
       {
-        origNum: "04",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico (Incumplimiento)",
         question: "Caso práctico: Un Ministerio recauda tasas en efectivo y las mantiene 45 días en una cuenta comercial externa antes de trasladarlas a la CUT. ¿Qué principios vulnera?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Unidad de Caja y Oportunidad).",
@@ -336,8 +344,8 @@
         exp: "Retener fondos públicos fuera de la CUT y fuera del plazo normativo de acreditación vulnera los principios de Unidad de Caja y Oportunidad."
       },
       {
-        origNum: "05",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico (Incumplimiento)",
         question: "Caso práctico: El Tesorero gira un pago a un proveedor basándose solo en una llamada telefónica del área usuaria, sin orden de compra ni conformidad. ¿Qué principio incumple?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Veracidad).",
@@ -351,8 +359,8 @@
         exp: "El principio de Veracidad exige que las autorizaciones y operaciones de tesorería se sustenten en documentación fehaciente y verificable."
       },
       {
-        origNum: "06",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principios Rectores (Cumplimiento)",
         question: "¿Cómo se aplica el principio de 'Eficiencia y prudencia' en la gestión integral de activos y pasivos financieros?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Eficiencia y prudencia).",
@@ -366,8 +374,8 @@
         exp: "Consiste en manejar los fondos optimizando su rentabilidad y reduciendo costos financieros bajo un enfoque prudente de gestión de riesgos."
       },
       {
-        origNum: "07",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Conformación",
         question: "¿Quiénes son los responsables conjuntos de administrar los Fondos Públicos en el nivel descentralizado u operativo de una entidad?",
         hint: "Decreto Legislativo N° 1441 — Art. 6 (Nivel Descentralizado).",
@@ -381,8 +389,8 @@
         exp: "El Director General de Administración (o quien haga sus veces) y el Tesorero administran conjuntamente los Fondos Públicos en la Unidad Ejecutora."
       },
       {
-        origNum: "08",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Gestión de Ingresos",
         question: "Según el D.L. N° 1441 (modificado por D.L. N° 1645), ¿qué condición tienen los Recursos Directamente Recaudados (tasas y multas) de los Poderes del Estado y OCA?",
         hint: "Decreto Legislativo N° 1441 — Gestión de Ingresos.",
@@ -396,8 +404,8 @@
         exp: "Los RDR de los Poderes del Estado y Organismos Constitucionalmente Autónomos constituyen recursos del Tesoro Público, exceptuando a las Universidades Públicas y entidades autorizadas por ley."
       },
       {
-        origNum: "09",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Gestión de Liquidez",
         question: "¿Qué características definen a las Letras del Tesoro Público dentro de la gestión de liquidez del SNT?",
         hint: "Decreto Legislativo N° 1441 — Instrumentos de Liquidez.",
@@ -411,23 +419,21 @@
         exp: "Las Letras del Tesoro Público son títulos valores emitidos por la DGTP a plazos menores de un año para cubrir descalces estacionales de caja."
       },
       {
-        origNum: "10",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Gestión de Liquidez",
-        question: "¿Cuál es el límite máximo acumulado establecido para la Reserva Secundaria de Liquidez del Tesoro Público?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Liquidez)",
+        question: "Verdadero o Falso: El límite máximo acumulado establecido para la Reserva Secundaria de Liquidez del Tesoro Público equivale al 5,0% del Producto Bruto Interno (PBI) nominal.",
         hint: "Decreto Legislativo N° 1441 — Reserva Secundaria de Liquidez.",
         options: [
-          "Hasta el 1,5% del PBI nominal.",
-          "Hasta el 5,0% del PBI nominal.",
-          "Hasta el 3,0% del Presupuesto Institucional.",
-          "Hasta el 10,0% de la recaudación tributaria."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "La Reserva Secundaria de Liquidez tiene un tope acumulado equivalente al 1,5% del Producto Bruto Interno (PBI) nominal."
+        correct: 1,
+        exp: "FALSO. El límite máximo acumulado de la Reserva Secundaria de Liquidez del Tesoro Público es equivalente hasta el 1,5% del PBI nominal (no el 5,0%)."
       },
       {
-        origNum: "11",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Ejecución del Gasto",
         question: "¿Qué funcionario autoriza el reconocimiento del Devengado en una Unidad Ejecutora según el Art. 17 del D.L. N° 1441?",
         hint: "Decreto Legislativo N° 1441 — Art. 17 (Devengado).",
@@ -441,23 +447,21 @@
         exp: "El reconocimiento del Devengado es autorizado por el Director General de Administración o Jefe de Administración, o quien haga sus veces."
       },
       {
-        origNum: "12",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Plazos de Pago",
-        question: "¿Hasta qué fecha límite puede pagarse una obligación cuyo Devengado fue debidamente formalizado y registrado al 31 de diciembre?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Plazos de Pago)",
+        question: "Verdadero o Falso: Una obligación cuyo Devengado fue debidamente formalizado y registrado al 31 de diciembre puede pagarse hasta el 31 de enero del año fiscal siguiente.",
         hint: "Decreto Legislativo N° 1441 — Art. 17 (Plazo de Pago).",
         options: [
-          "Hasta el 31 de enero del año fiscal siguiente.",
-          "Hasta el 15 de enero del año fiscal siguiente.",
-          "Hasta el 31 de diciembre del mismo año fiscal.",
-          "Hasta el 28 de febrero del año fiscal siguiente."
+          "Verdadero",
+          "Falso"
         ],
         correct: 0,
-        exp: "El devengado debidamente formalizado y registrado al 31 de diciembre puede pagarse hasta el 31 de enero del año fiscal siguiente."
+        exp: "VERDADERO. Conforme al Art. 17 del D.L. N° 1441, el devengado formalizado y registrado al 31 de diciembre puede pagarse hasta el 31 de enero del año fiscal siguiente."
       },
       {
-        origNum: "13",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico",
         question: "Caso práctico: Una Unidad Ejecutora detecta en su cuenta fondos depositados cuyo origen o régimen legal no está aclarado. ¿Qué debe hacer?",
         hint: "Decreto Legislativo N° 1441 — Reglas para la Gestión de Tesorería.",
@@ -471,8 +475,8 @@
         exp: "Los fondos o valores sin origen justificado deben depositarse en la cuenta principal de la DGTP o entregarse en custodia, prohibiéndose disponer de ellos."
       },
       {
-        origNum: "14",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico",
         question: "Caso práctico: La Contraloría solicita a la DGTP suspender temporalmente las cuentas bancarias de una municipalidad por presunto fraude. ¿Qué ocurre con las planillas y pensiones?",
         hint: "Decreto Legislativo N° 1441 — Suspensión temporal de operaciones.",
@@ -486,23 +490,21 @@
         exp: "La solicitud de suspensión temporal debe precisar expresamente si comprende o no el pago de planillas, pensiones, servicios básicos y programas sociales."
       },
       {
-        origNum: "15",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Inembargabilidad",
-        question: "¿Qué entidad ejerce la defensa judicial cuando se pretende embargar fondos públicos conformantes de la Cuenta Única del Tesoro?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Inembargabilidad)",
+        question: "Verdadero o Falso: Los fondos públicos que conforman la Cuenta Única del Tesoro (CUT) son inembargables y su defensa judicial corresponde a la Procuraduría Pública Especializada en Materia Hacendaria.",
         hint: "Decreto Legislativo N° 1441 — Inembargabilidad de Fondos Públicos.",
         options: [
-          "La Procuraduría Pública Especializada en Materia Hacendaria.",
-          "La Dirección General de Contabilidad Pública del MEF.",
-          "La Oficina de Asesoría Jurídica del Banco de la Nación.",
-          "La Procuraduría Especializada en Delitos de Corrupción."
+          "Verdadero",
+          "Falso"
         ],
         correct: 0,
-        exp: "Los fondos públicos de la CUT son inembargables y su defensa legal corresponde a la Procuraduría Pública Especializada en Materia Hacendaria."
+        exp: "VERDADERO. Los fondos públicos de la CUT son inembargables y su defensa legal corresponde a la Procuraduría Pública Especializada en Materia Hacendaria."
       },
       {
-        origNum: "16",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Conciliación Bancaria",
         question: "¿Qué obligación periódica tienen las Unidades Ejecutoras respecto a sus cuentas bancarias autorizadas en el SNT?",
         hint: "Directiva de Tesorería — Conciliación de Cuentas Bancarias.",
@@ -516,23 +518,21 @@
         exp: "Las entidades deben efectuar mensualmente la conciliación entre los extractos bancarios, el libro bancos y los registros del SIAF."
       },
       {
-        origNum: "17",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Cuenta Única del Tesoro",
-        question: "¿En qué entidad bancaria mantiene la DGTP la Cuenta Principal de la Cuenta Única del Tesoro Público (CUT)?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Cuenta Principal CUT)",
+        question: "Verdadero o Falso: La Cuenta Principal de la Cuenta Única del Tesoro Público (CUT) se mantiene exclusivamente en bancos comerciales privados elegidos por cada Ministerio.",
         hint: "Decreto Legislativo N° 1441 — Cuenta Única del Tesoro.",
         options: [
-          "En el Banco Central de Reserva del Perú (BCRP).",
-          "En el Banco de Crédito del Perú (BCP).",
-          "En la Corporación Financiera de Desarrollo (COFIDE).",
-          "En el Fondo Consolidado de Reservas (FCR)."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "La Cuenta Principal de la CUT se mantiene en el Banco Central de Reserva del Perú (BCRP), operando también cuentas auxiliares en el Banco de la Nación."
+        correct: 1,
+        exp: "FALSO. La Cuenta Principal de la CUT se mantiene en el Banco Central de Reserva del Perú (BCRP), operando también cuentas auxiliares en el Banco de la Nación."
       },
       {
-        origNum: "18",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Pagaduría",
         question: "¿Cuál es el medio prioritario de pago utilizado por las Unidades Ejecutoras en el marco de la modernización de la Tesorería?",
         hint: "Decreto Legislativo N° 1441 — Pagaduría Electrónica.",
@@ -546,8 +546,8 @@
         exp: "El SNT prioriza los pagos electrónicos mediante abono directo en las cuentas bancarias de los beneficiarios identificadas con su Código de Cuenta Interbancario (CCI)."
       },
       {
-        origNum: "19",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Devoluciones",
         question: "Caso práctico: Un proveedor devuelve mediante depósito un pago en exceso efectuado por error en el mismo año fiscal. ¿Cómo procede Tesorería?",
         hint: "Normativa del SNT — Devoluciones de Fondos Públicos.",
@@ -561,23 +561,21 @@
         exp: "Las devoluciones por menores gastos o pagos indebidos del mismo ejercicio se registran en el SIAF restituyendo los recursos a la fuente de financiamiento correspondiente."
       },
       {
-        origNum: "20",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Caja Chica",
-        question: "¿Para qué tipo de obligaciones está permitido utilizar el Fondo para Pagos en Efectivo o Caja Chica?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Caja Chica)",
+        question: "Verdadero o Falso: El Fondo para Pagos en Efectivo o Caja Chica puede utilizarse válidamente para fraccionar compras programables y pagar planillas de personal CAS cuando haya demora bancaria.",
         hint: "Directiva de Tesorería — Uso de Caja Chica.",
         options: [
-          "Gastos menudos y urgentes que por su naturaleza no pueden programarse.",
-          "Pago de planillas de remuneraciones y bonificaciones del personal CAS.",
-          "Adquisición de activos fijos y vehículos mediante compra directa.",
-          "Fraccionamiento de compras programables para evitar procesos de selección."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "La Caja Chica se destina únicamente a gastos menudos, urgentes y no programables, estando prohibido su uso para fraccionar adquisiciones o pagar planillas."
+        correct: 1,
+        exp: "FALSO. La Caja Chica se destina exclusivamente a gastos menudos, urgentes y no programables; está estrictamente prohibido usarla para fraccionar compras o pagar planillas."
       },
       {
-        origNum: "21",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principio de Oportunidad (Cumplimiento)",
         question: "¿Cuál de los siguientes ejemplos refleja el CUMPLIMIENTO del principio de 'Oportunidad' en el Sistema Nacional de Tesorería?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Oportunidad).",
@@ -591,8 +589,8 @@
         exp: "El principio de Oportunidad exige la percepción, acreditación y disponibilidad de los fondos públicos en los plazos establecidos para atender puntualmente las obligaciones."
       },
       {
-        origNum: "22",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principio de Fungibilidad (Incumplimiento)",
         question: "¿En cuál de las siguientes situaciones se DESNATURALIZA o incumple el principio de 'Fungibilidad' de la CUT?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Fungibilidad).",
@@ -606,8 +604,8 @@
         exp: "La fungibilidad permite el uso temporal de saldos disponibles en la CUT siempre que se respete estrictamente su titularidad y registro, sin apropiación definitiva."
       },
       {
-        origNum: "23",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principio de Eficiencia y Prudencia (Incumplimiento)",
         question: "Caso práctico (Incumplimiento de principio): Un funcionario encargado de inversiones de excedentes de caja coloca liquidez pública en criptoactivos de alto riesgo buscando ganancias rápidas. ¿Qué principio vulnera?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Eficiencia y prudencia).",
@@ -621,8 +619,8 @@
         exp: "El principio de Eficiencia y prudencia exige gestionar activos y pasivos financieros bajo un nivel de riesgo prudente, prohibiendo inversiones especulativas."
       },
       {
-        origNum: "24",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico (Pagos y Retenciones)",
         question: "Caso práctico: Al girar el pago de una factura a un proveedor sujeto al régimen de detracciones (SPOT), el Tesorero transfiere el 100% del monto a la cuenta comercial del proveedor omitiendo el depósito al Banco de la Nación. ¿Qué error operativo comete?",
         hint: "Normativa de Tesorería y Tributaria — Detracciones en el Sector Público.",
@@ -636,8 +634,8 @@
         exp: "En operaciones sujetas a detracción, Tesorería debe depositar el porcentaje correspondiente en la cuenta de detracciones del proveedor en el Banco de la Nación y abonar solo el saldo neto."
       },
       {
-        origNum: "25",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico (Responsabilidad en el Giro)",
         question: "Caso práctico: El Jefe de Administración ordena al Tesorero girar un cheque por un servicio que aún no cuenta con registro de Devengado aprobado en el SIAF. ¿Qué debe hacer el Tesorero?",
         hint: "Decreto Legislativo N° 1441 — Art. 17 y Principio de Veracidad.",
@@ -650,10 +648,9 @@
         correct: 0,
         exp: "Ningún pago puede ejecutarse sin contar previamente con el Devengado debidamente formalizado y registrado en el SIAF, bajo responsabilidad funcional."
       },
-      // --- 5 NUEVAS PREGUNTAS DE TESORERÍA (26 - 30) ---
       {
-        origNum: "26",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principio de Unidad de Caja (Cumplimiento)",
         question: "¿Cuál de los siguientes ejemplos evidencia el CUMPLIMIENTO estricto del principio de 'Unidad de Caja'?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Unidad de Caja).",
@@ -667,23 +664,21 @@
         exp: "La Unidad de Caja se cumple cuando todos los fondos públicos se administran de manera centralizada en la CUT respetando su titularidad y registro contable."
       },
       {
-        origNum: "27",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Principio de Veracidad (Cumplimiento)",
-        question: "¿Qué actuación operativa demuestra el CUMPLIMIENTO del principio de 'Veracidad' en una oficina de Tesorería?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1441 • Verdadero o Falso (Veracidad)",
+        question: "Verdadero o Falso: Se cumple el principio de 'Veracidad' cuando el Tesorero aprueba transferencias bancarias basándose en correos informales del área usuaria sin verificar el comprobante ni la conformidad escrita.",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Veracidad).",
         options: [
-          "Verificar la autenticidad del comprobante y conformidad escrita antes del giro.",
-          "Aprobar transferencias bancarias basándose en correos informales sin sustento.",
-          "Registrar ingresos estimados como recaudación efectiva antes de su abono real.",
-          "Emitir giros globales a nombre del cajero para distribuir pagos sin recibos."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "El principio de Veracidad exige comprobar que toda operación de ingreso o egreso esté respaldada por documentación auténtica, válida y debidamente autorizada."
+        correct: 1,
+        exp: "FALSO. Eso constituye un incumplimiento grave del principio de Veracidad, el cual exige comprobar documentación auténtica, fehaciente y formalmente autorizada antes del giro."
       },
       {
-        origNum: "28",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Principio de Oportunidad (Incumplimiento)",
         question: "Caso práctico (Incumplimiento de principio): A pesar de contar con liquidez en la CUT y devengado aprobado desde hace 25 días, el Tesorero retiene sin justificación el pago a un proveedor generando intereses moratorios. ¿Qué principio vulnera?",
         hint: "Decreto Legislativo N° 1441 — Art. 2 (Oportunidad).",
@@ -697,8 +692,8 @@
         exp: "El principio de Oportunidad exige atender los pagos dentro de los plazos establecidos para evitar costos financieros innecesarios y perjuicio al Estado."
       },
       {
-        origNum: "29",
         module: "TESORERIA",
+        type: "MC",
         moduleLabel: "D.L. N° 1441 • Caso Práctico (Encargos Internos)",
         question: "Caso práctico: Se otorga un 'Encargo Interno' a un servidor para adquirir insumos urgentes en una zona rural sin proveedores bancarizados, pero transcurren 30 días hábiles tras culminar la comisión sin que rinda cuentas. ¿Qué medida corresponde según normativa de Tesorería?",
         hint: "Directiva de Tesorería — Plazo de Rendición de Encargos Internos.",
@@ -712,9 +707,9 @@
         exp: "Los encargos internos deben rendirse dentro de los 3 días hábiles siguientes de culminada la actividad; vencido el plazo, procede el requerimiento y descuento correspondiente."
       },
       {
-        origNum: "30",
         module: "TESORERIA",
-        moduleLabel: "D.L. N° 1441 • Caso Práctico (Cheques y Giros No Cobrados)",
+        type: "MC",
+        moduleLabel: "D.L. N° 1441 • Caso Práctico (Cheques Caducados)",
         question: "Caso práctico: Una Unidad Ejecutora detecta que un cheque girado hace más de un año por una obligación devengada nunca fue cobrado por el beneficiario y ha caducado. ¿Qué debe hacer Tesorería?",
         hint: "Normativa del SNT — Anulación de Giros y Reversión.",
         options: [
@@ -728,11 +723,11 @@
       },
 
       // =========================================================
-      // MÓDULO 2: SISTEMA NACIONAL DE CONTABILIDAD - D.L. 1438 / 1525 (31 - 60)
+      // MÓDULO 2: SISTEMA NACIONAL DE CONTABILIDAD - D.L. 1438 / 1525 (30 ÍTEMS)
       // =========================================================
       {
-        origNum: "31",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principios Contables",
         question: "¿Qué principio contable exige que la información financiera sea completa, neutral y libre de error significativo?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Fiabilidad).",
@@ -746,8 +741,8 @@
         exp: "La fiabilidad garantiza que la información financiera represente fielmente los hechos económicos sin sesgos ni errores significativos."
       },
       {
-        origNum: "32",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principios Contables (Incumplimiento)",
         question: "¿Qué situación constituye un INCUMPLIMIENTO del principio de 'Uniformidad' en la contabilidad pública?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Uniformidad).",
@@ -761,8 +756,8 @@
         exp: "La uniformidad exige mantener los mismos criterios y políticas contables entre periodos para asegurar la comparabilidad de los estados financieros."
       },
       {
-        origNum: "33",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principios Contables",
         question: "¿En qué consiste el principio de 'Oportunidad' en el Sistema Nacional de Contabilidad?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Oportunidad).",
@@ -776,8 +771,8 @@
         exp: "La oportunidad exige el registro, procesamiento y presentación de la información contable en el momento y plazos normativos para que sea útil en la toma de decisiones."
       },
       {
-        origNum: "34",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Conformación del SNC",
         question: "¿Qué órganos integran el Sistema Nacional de Contabilidad según el Artículo 4 del D.L. N° 1438?",
         hint: "Decreto Legislativo N° 1438 — Art. 4 (Conformación).",
@@ -791,8 +786,8 @@
         exp: "El SNC está conformado por la Dirección General de Contabilidad Pública (DGCP), el Consejo Normativo de Contabilidad (CNC) y las Oficinas de Contabilidad de las entidades."
       },
       {
-        origNum: "35",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Consejo Normativo",
         question: "¿Cuál es la función normativa específica del Consejo Normativo de Contabilidad (CNC)?",
         hint: "Decreto Legislativo N° 1438 — Art. 6 (CNC).",
@@ -806,23 +801,21 @@
         exp: "El CNC (integrado por 9 representantes) estudia, analiza y aprueba las normas contables aplicables al sector privado y empresas públicas en lo que corresponda."
       },
       {
-        origNum: "36",
         module: "CONTABILIDAD",
-        moduleLabel: "D.L. N° 1525 • Archivo Contable",
-        question: "¿Por cuánto tiempo mínimo deben conservar las entidades la documentación física o electrónica sustentatoria de sus transacciones contables?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1525 • Verdadero o Falso (Archivo Contable)",
+        question: "Verdadero o Falso: Según el Artículo 8 del D.L. N° 1525, las entidades públicas deben conservar la documentación física o electrónica sustentatoria de sus transacciones contables por un tiempo no menor de diez (10) años.",
         hint: "Decreto Legislativo N° 1525 — Art. 8 (Conservación).",
         options: [
-          "Por un tiempo no menor de diez (10) años.",
-          "Por un tiempo no menor de cinco (5) años.",
-          "Por un tiempo no menor de tres (3) años.",
-          "Por un tiempo no menor de quince (15) años."
+          "Verdadero",
+          "Falso"
         ],
         correct: 0,
-        exp: "El Art. 8 del D.L. N° 1525 establece que la documentación sustentatoria, libros y registros contables deben conservarse por no menos de 10 años."
+        exp: "VERDADERO. El Art. 8 del D.L. N° 1525 establece la obligación de conservar libros, registros y documentación sustentatoria por no menos de 10 años."
       },
       {
-        origNum: "37",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1525 • Régimen Sancionador (Caso Práctico)",
         question: "Caso práctico: Un contador registra una factura por un servicio inexistente por orden escrita de su jefe inmediato. ¿Qué falta configura según el Art. 9 del D.L. N° 1525?",
         hint: "Decreto Legislativo N° 1525 — Art. 9 (Faltas Muy Graves).",
@@ -836,8 +829,8 @@
         exp: "Registrar operaciones inexistentes o documentos adulterados constituye Falta Muy Grave (Art. 9), y el cumplimiento de órdenes superiores no exime de responsabilidad."
       },
       {
-        origNum: "38",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1525 • Régimen Sancionador",
         question: "¿Cuál de las siguientes conductas está tipificada como una FALTA GRAVE en el Artículo 9 del D.L. N° 1525?",
         hint: "Decreto Legislativo N° 1525 — Art. 9 (Faltas Graves).",
@@ -851,23 +844,21 @@
         exp: "La omisión a la presentación de la rendición de cuentas o su presentación inconsistente o incompleta está tipificada como Falta Grave."
       },
       {
-        origNum: "39",
         module: "CONTABILIDAD",
-        moduleLabel: "D.L. N° 1525 • Cuenta General",
-        question: "¿Cuál es la fecha límite para que las entidades del Sector Público presenten su Rendición de Cuentas Anual a la DGCP?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1525 • Verdadero o Falso (Rendición Anual)",
+        question: "Verdadero o Falso: Las entidades del Sector Público tienen como plazo máximo hasta el 31 de mayo del año siguiente para presentar su Rendición de Cuentas Anual a la DGCP.",
         hint: "Decreto Legislativo N° 1525 — Art. 23.",
         options: [
-          "Hasta el 15 de marzo del año siguiente al ejercicio fiscal.",
-          "Hasta el 31 de mayo del año siguiente al ejercicio fiscal.",
-          "Hasta el 10 de agosto del año siguiente al ejercicio fiscal.",
-          "Hasta el 31 de enero del año siguiente al ejercicio fiscal."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "Las entidades presentan su rendición de cuentas anual hasta el 15 de marzo del año siguiente al cierre del ejercicio."
+        correct: 1,
+        exp: "FALSO. Las entidades presentan su rendición de cuentas a la DGCP hasta el 15 de marzo; el 31 de mayo es el plazo para que la DGCP remita la Cuenta General a la Contraloría."
       },
       {
-        origNum: "40",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1525 • Cuenta General",
         question: "¿Cuáles son los plazos de remisión de la Cuenta General de la República por la DGCP y de emisión del Informe de Auditoría por la CGR?",
         hint: "Decreto Legislativo N° 1525 — Arts. 25.2 y 26.1.",
@@ -881,23 +872,21 @@
         exp: "La DGCP remite la Cuenta General a la Contraloría hasta el 31 de mayo, y la Contraloría emite su Informe de Auditoría al MEF hasta el 10 de agosto."
       },
       {
-        origNum: "41",
         module: "CONTABILIDAD",
-        moduleLabel: "NICSP • Marco Normativo",
-        question: "¿Qué marco normativo internacional aplica el Sector Público Peruano y cuándo culmina su proceso de transición?",
+        type: "TF",
+        moduleLabel: "NICSP • Verdadero o Falso (Marco Normativo)",
+        question: "Verdadero o Falso: El Sector Público Peruano prepara su información financiera bajo las Normas Internacionales de Contabilidad del Sector Público (NICSP), cuyo proceso de transición culmina en diciembre de 2026.",
         hint: "Adopción de las NICSP en el Sector Público.",
         options: [
-          "Las NICSP, cuyo proceso de transición culmina en diciembre de 2026.",
-          "Las NIIF PYMES, cuya transición culminó en diciembre de 2022.",
-          "Las US GAAP, cuya transición culmina en diciembre de 2028.",
-          "El Plan Contable General Empresarial, aplicado de modo permanente."
+          "Verdadero",
+          "Falso"
         ],
         correct: 0,
-        exp: "El Sector Público prepara su información financiera bajo las Normas Internacionales de Contabilidad del Sector Público (NICSP), culminando su transición en diciembre de 2026."
+        exp: "VERDADERO. La transición hacia las NICSP en el Sector Público Peruano culmina en diciembre de 2026."
       },
       {
-        origNum: "42",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "NICSP vs. Presupuesto • Caso Práctico",
         question: "Caso práctico (visto en clase): El 21 de mayo ingresan 5 computadoras al almacén y el 22 de mayo se incendian antes de otorgarse la conformidad. ¿Cuál es el efecto contable y presupuestal?",
         hint: "Devengo Contable (NICSP) vs. Devengo Presupuestal.",
@@ -911,8 +900,8 @@
         exp: "Contablemente se reconoce el hecho económico (ingreso y posterior pérdida por siniestro), pero presupuestalmente no se devenga ni paga por faltar la conformidad."
       },
       {
-        origNum: "43",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "NICSP 17 • Caso Práctico",
         question: "Caso práctico (visto en clase): Un hospital público lleva 13 años atendiendo pacientes sin tener resolución de liquidación financiera de obra. ¿Qué tratamiento contable corresponde?",
         hint: "NICSP 17 (Propiedades, Planta y Equipo).",
@@ -926,8 +915,8 @@
         exp: "Bajo NICSP (esencia sobre forma), el activo se reclasifica como concluido y se deprecia desde que estuvo disponible para su uso, con sustento técnico de vida útil."
       },
       {
-        origNum: "44",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "NICSP 17 y 21 • Caso Práctico",
         question: "Caso práctico (visto en clase): Una camioneta adquirida en un proyecto judicializado se encuentra operativa patrullando las calles. ¿Cómo debe tratarse contablemente?",
         hint: "NICSP 17 y NICSP 21 (Deterioro de Activos).",
@@ -941,23 +930,21 @@
         exp: "Al estar operativa, debe seguir depreciándose, evaluarse por deterioro y revelarse la situación judicial en las Notas a los Estados Financieros."
       },
       {
-        origNum: "45",
         module: "CONTABILIDAD",
-        moduleLabel: "D.L. N° 1438 • Base Contable",
-        question: "¿Sobre qué base contable se reconocen las transacciones y hechos económicos en la contabilidad pública según el D.L. N° 1438?",
+        type: "TF",
+        moduleLabel: "D.L. N° 1438 • Verdadero o Falso (Base Contable)",
+        question: "Verdadero o Falso: En el Sistema Nacional de Contabilidad, las transacciones se reconocen bajo la base estricta de efectivo (solo cuando sale o ingresa dinero), descartando el devengo contable.",
         hint: "Decreto Legislativo N° 1438 — Base de Acumulación (Devengo).",
         options: [
-          "Sobre la base de acumulación o devengo contable.",
-          "Sobre la base estricta de efectivo o flujo de caja.",
-          "Sobre la base de compromisos anuales certificados.",
-          "Sobre la base de presupuestos iniciales aprobados."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "La contabilidad pública se lleva bajo la base de acumulación (devengo), reconociendo los hechos cuando ocurren y no solo cuando se cobra o paga efectivo."
+        correct: 1,
+        exp: "FALSO. La contabilidad pública se lleva sobre la base de acumulación o devengo, reconociendo los hechos económicos cuando ocurren independientemente del flujo de efectivo."
       },
       {
-        origNum: "46",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Responsabilidad",
         question: "¿Quiénes son responsables de suscribir y presentar la rendición de cuentas anual de una entidad pública ante la DGCP?",
         hint: "Decreto Legislativo N° 1438 — Responsables de la Rendición de Cuentas.",
@@ -971,8 +958,8 @@
         exp: "La suscripción y presentación de la rendición de cuentas es responsabilidad del Titular de la entidad, del Jefe de Administración y del Contador."
       },
       {
-        origNum: "47",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Estados Financieros",
         question: "¿Cuál de los siguientes estados financieros muestra la situación de los activos, pasivos y patrimonio neto de una entidad pública a una fecha determinada?",
         hint: "NICSP 1 (Presentación de Estados Financieros).",
@@ -986,8 +973,8 @@
         exp: "El Estado de Situación Financiera (EF-1) presenta los activos, pasivos y patrimonio neto de la entidad a una fecha de corte."
       },
       {
-        origNum: "48",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Estadísticas Fiscales",
         question: "¿Con qué periodicidad elabora la DGCP las Estadísticas de las Finanzas Públicas conforme a estándares internacionales?",
         hint: "Decreto Legislativo N° 1438 — Estadísticas de las Finanzas Públicas.",
@@ -1001,8 +988,8 @@
         exp: "La DGCP elabora y difunde las Estadísticas de las Finanzas Públicas con periodicidad mensual, trimestral y anual siguiendo estándares internacionales (MEFP)."
       },
       {
-        origNum: "49",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "NICSP 19 • Provisiones y Contingencias",
         question: "Caso práctico: Una entidad enfrenta una demanda laboral con alta probabilidad de pérdida y cuyo monto puede estimarse con fiabilidad. ¿Qué debe registrar contablemente?",
         hint: "NICSP 19 (Provisiones, Pasivos Contingentes y Activos Contingentes).",
@@ -1016,8 +1003,8 @@
         exp: "Cuando existe una obligación presente probable y medible con fiabilidad, la NICSP 19 exige reconocer una provisión en el pasivo."
       },
       {
-        origNum: "50",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1525 • Entidades Omisas",
         question: "¿Qué consecuencia administrativa acarrea que una entidad pública sea declarada 'omisa' a la presentación de la rendición de cuentas anual?",
         hint: "Decreto Legislativo N° 1525 — Art. 24 (Entidades Omisas).",
@@ -1031,8 +1018,8 @@
         exp: "La DGCP publica la relación de entidades omisas en el portal del MEF y comunica a la Contraloría y al Titular para el deslinde de responsabilidades."
       },
       {
-        origNum: "51",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Integridad (Incumplimiento)",
         question: "¿Cuál de los siguientes casos constituye un INCUMPLIMIENTO del principio contable de 'Integridad' en el Sector Público?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Integridad).",
@@ -1046,8 +1033,8 @@
         exp: "El principio de Integridad exige el registro completo de todos los hechos económicos, por lo que omitir bienes o transacciones recibidas vulnera directamente este principio."
       },
       {
-        origNum: "52",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Transparencia (Cumplimiento)",
         question: "¿Qué acción evidencia el CUMPLIMIENTO del principio de 'Transparencia' en el Sistema Nacional de Contabilidad?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Transparencia).",
@@ -1061,8 +1048,8 @@
         exp: "La transparencia implica poner a disposición pública, de manera clara y accesible, los estados financieros y sus revelaciones para la rendición de cuentas."
       },
       {
-        origNum: "53",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Oportunidad (Incumplimiento)",
         question: "Caso práctico (Incumplimiento de principio): Una oficina de contabilidad acumula las pólizas de salida de almacén de todo el año y recién las registra en el SIAF en febrero del año siguiente. ¿Qué principio incumple?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Oportunidad).",
@@ -1076,8 +1063,8 @@
         exp: "Retrasar el registro contable de las operaciones fuera del periodo en que ocurren vulnera el principio de Oportunidad y distorsiona los estados financieros intermedios."
       },
       {
-        origNum: "54",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "NICSP 12 • Caso Práctico (Inventarios)",
         question: "Caso práctico: Al cierre del ejercicio, una entidad mantiene en almacén medicamentos próximos a vencer cuyo valor recuperable es menor a su costo registrado en libros. ¿Qué ajuste contable exige la NICSP 12?",
         hint: "NICSP 12 (Inventarios — Deterioro o rebaja al valor neto realizable).",
@@ -1091,24 +1078,21 @@
         exp: "Conforme a la NICSP 12, cuando los inventarios sufren obsolescencia o deterioro, debe reconocerse la pérdida por desvalorización rebajando su valor en libros."
       },
       {
-        origNum: "55",
         module: "CONTABILIDAD",
-        moduleLabel: "NICSP 1 • Caso Práctico (Compensación de Saldos)",
-        question: "Caso práctico: Una entidad tiene una cuenta por cobrar a un contratista por penalidades (S/ 30,000) y, a la vez, una cuenta por pagar al mismo proveedor por otro contrato distinto (S/ 50,000). ¿Puede presentar un saldo neto de S/ 20,000 en el Estado de Situación Financiera?",
+        type: "TF",
+        moduleLabel: "NICSP 1 • Verdadero o Falso (Compensación)",
+        question: "Verdadero o Falso: Bajo la NICSP 1, una entidad puede compensar una cuenta por cobrar por penalidades (S/ 30,000) con una cuenta por pagar al mismo contratista por otro contrato (S/ 50,000) para presentar un saldo neto de S/ 20,000 en el Estado de Situación Financiera.",
         hint: "NICSP 1 (Compensación de activos y pasivos).",
         options: [
-          "No, los activos y pasivos deben presentarse por separado sin compensarse.",
-          "Sí, siempre que ambos contratos pertenezcan al mismo año presupuestal.",
-          "Sí, para simplificar la lectura del Estado de Situación Financiera (EF-1).",
-          "No, salvo que el proveedor autorice la compensación mediante carta simple."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "La NICSP 1 prohíbe compensar activos con pasivos o ingresos con gastos, salvo que una norma específica lo requiera o permita expresamente."
+        correct: 1,
+        exp: "FALSO. La NICSP 1 prohíbe compensar activos con pasivos o ingresos con gastos, debiendo presentarse por separado salvo autorización normativa expresa."
       },
-      // --- 5 NUEVAS PREGUNTAS DE CONTABILIDAD (56 - 60) ---
       {
-        origNum: "56",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Fiabilidad (Cumplimiento)",
         question: "¿Cuál de las siguientes prácticas refleja el CUMPLIMIENTO del principio de 'Fiabilidad' en la elaboración de los estados financieros?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Fiabilidad).",
@@ -1122,8 +1106,8 @@
         exp: "La fiabilidad se cumple asegurando que las cifras contables estén verificadas, libres de sesgos y respaldadas por conciliaciones reales."
       },
       {
-        origNum: "57",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Uniformidad (Cumplimiento)",
         question: "¿Qué situación ejemplifica el CUMPLIMIENTO adecuado del principio de 'Uniformidad' en una Unidad Ejecutora?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Uniformidad).",
@@ -1137,8 +1121,8 @@
         exp: "Mantener consistentes las políticas y métodos contables a lo largo del tiempo permite comparar fielmente la evolución financiera entre ejercicios."
       },
       {
-        origNum: "58",
         module: "CONTABILIDAD",
+        type: "MC",
         moduleLabel: "D.L. N° 1438 • Principio de Transparencia (Incumplimiento)",
         question: "Caso práctico (Incumplimiento de principio): Una entidad presenta sus estados financieros omitiendo deliberadamente las Notas Explicativas sobre garantías otorgadas y deudas contingentes para evitar cuestionamientos. ¿Qué principio vulnera?",
         hint: "Decreto Legislativo N° 1438 — Art. 2 (Transparencia y Fiabilidad).",
@@ -1152,9 +1136,9 @@
         exp: "Ocultar revelaciones esenciales en las Notas a los Estados Financieros impide comprender la realidad financiera de la entidad y vulnera el principio de Transparencia."
       },
       {
-        origNum: "59",
         module: "CONTABILIDAD",
-        moduleLabel: "NICSP 23 • Caso Práctico (Ingresos sin Contraprestación)",
+        type: "MC",
+        moduleLabel: "NICSP 23 • Caso Práctico (Transferencias Condicionadas)",
         question: "Caso práctico: Un Gobierno Regional recibe una transferencia financiera condicionada del Gobierno Nacional con la obligación expresa de devolver los fondos no ejecutados en la construcción de una posta médica. ¿Cómo se reconoce inicialmente bajo NICSP 23?",
         hint: "NICSP 23 (Ingresos de Transacciones sin Contraprestación).",
         options: [
@@ -1167,19 +1151,17 @@
         exp: "Según la NICSP 23, cuando una transferencia conlleva una condición con obligación de devolución si no se cumple, se reconoce un pasivo que se va devengando como ingreso conforme se ejecuta la condición."
       },
       {
-        origNum: "60",
         module: "CONTABILIDAD",
-        moduleLabel: "NICSP 17 • Caso Práctico (Mantenimiento vs. Mejora)",
-        question: "Caso práctico: Una entidad realiza el pintado rutinario y cambio de aceite de su flota vehicular (mantenimiento preventivo), y el contador pretende activarlo incrementando el valor en libros de los vehículos. ¿Es correcto bajo NICSP 17?",
+        type: "TF",
+        moduleLabel: "NICSP 17 • Verdadero o Falso (Mantenimiento vs. Mejora)",
+        question: "Verdadero o Falso: Conforme a la NICSP 17, los gastos rutinarios de pintado y cambio de aceite de una flota vehicular deben capitalizarse incrementando el valor contable del activo fijo.",
         hint: "NICSP 17 (Costos Posteriores: Mantenimiento vs. Capitalización).",
         options: [
-          "No, el mantenimiento rutinario se reconoce como gasto del periodo y no como activo.",
-          "Sí, todo desembolso efectuado sobre un vehículo estatal incrementa su valor contable.",
-          "Sí, siempre que el monto supere una Unidad Impositiva Tributaria en el ejercicio.",
-          "No, debe registrarse como disminución directa del patrimonio neto de la entidad."
+          "Verdadero",
+          "Falso"
         ],
-        correct: 0,
-        exp: "Conforme a la NICSP 17, los costos de mantenimiento y conservación diaria se reconocen en el resultado del periodo como gasto; solo se capitalizan mejoras que amplían la vida útil o capacidad operativa."
+        correct: 1,
+        exp: "FALSO. Los costos de mantenimiento y conservación rutinaria se reconocen como gasto del periodo; solo se capitalizan desembolsos que amplían la vida útil o capacidad operativa."
       }
     ];
 
@@ -1187,19 +1169,36 @@
     let currentIdx = 0;
     let currentFilter = 'ALL';
 
-    function shuffleOptions(qObj) {
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function prepareQuestion(qObj) {
+      if (qObj.type === "TF") {
+        return {
+          ...qObj,
+          shuffledOptions: [...qObj.options],
+          correctShuffledIdx: qObj.correct,
+          selectedIdx: null,
+          checked: false
+        };
+      }
+
       const indexed = qObj.options.map((text, idx) => ({
         text,
         isCorrect: idx === qObj.correct
       }));
-      for (let i = indexed.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indexed[i], indexed[j]] = [indexed[j], indexed[i]];
-      }
+      const shuffled = shuffleArray(indexed);
+
       return {
         ...qObj,
-        shuffledOptions: indexed.map(item => item.text),
-        correctShuffledIdx: indexed.findIndex(item => item.isCorrect),
+        shuffledOptions: shuffled.map(item => item.text),
+        correctShuffledIdx: shuffled.findIndex(item => item.isCorrect),
         selectedIdx: null,
         checked: false
       };
@@ -1211,7 +1210,8 @@
         ? rawQuizData
         : rawQuizData.filter(q => q.module === filter);
 
-      activeQuestions = filtered.map(shuffleOptions);
+      // Mezcla aleatoria del orden de preguntas Y de las alternativas
+      activeQuestions = shuffleArray(filtered).map(prepareQuestion);
       currentIdx = 0;
 
       ['ALL', 'TESORERIA', 'CONTABILIDAD'].forEach(mod => {
@@ -1240,11 +1240,13 @@
 
     function renderQuestion() {
       const q = activeQuestions[currentIdx];
-      const letters = ['a', 'b', 'c', 'd'];
+      const isTF = q.type === "TF";
+      const letters = isTF ? ['V', 'F'] : ['a', 'b', 'c', 'd'];
 
       document.getElementById('moodle-q-num').textContent = currentIdx + 1;
       document.getElementById('module-badge').textContent = q.moduleLabel;
-      document.getElementById('q-text').textContent = `${q.origNum}. ${q.question}`;
+      document.getElementById('q-type-tag').textContent = isTF ? "Verdadero / Falso" : "Opción Múltiple";
+      document.getElementById('q-text').textContent = `${currentIdx + 1}. ${q.question}`;
 
       const hintBox = document.getElementById('hint-box');
       hintBox.classList.add('hidden');
@@ -1325,7 +1327,8 @@
           fbTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 me-1"></i> ¡Respuesta Correcta!`;
         } else {
           fbBox.className = "p-4 rounded-xl border-2 border-rose-400 bg-rose-50 text-rose-950 text-xs leading-relaxed mt-3 shadow-md";
-          fbTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 me-1"></i> Respuesta Incorrecta (Alternativa correcta: ${letters[q.correctShuffledIdx].toUpperCase()})`;
+          const correctLabel = isTF ? q.shuffledOptions[q.correctShuffledIdx] : letters[q.correctShuffledIdx].toUpperCase();
+          fbTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 me-1"></i> Respuesta Incorrecta (Respuesta correcta: ${correctLabel})`;
         }
         fbText.textContent = q.exp;
       } else {
